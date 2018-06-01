@@ -574,6 +574,12 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             return ShowDialog();
         }
 
+        public void Close(bool cancel)
+        {
+            var E_CANCELLED = 0x800704c7;
+            NativeDialog.Close( (cancel ? unchecked((int)E_CANCELLED) : 0) );
+        }
+
         /// <summary>
         /// Displays the dialog.
         /// </summary>
