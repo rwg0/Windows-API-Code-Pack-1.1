@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
         internal readonly Collection<IShellItem> items;
         internal DialogShowState showState = DialogShowState.PreShow;
 
-        private IFileDialog nativeDialog;
+        public IFileDialog NativeDialog { get; private set; }
         private IFileDialogCustomize customize;
         private NativeDialogEventSink nativeEventSink;
         private bool? canceled;
@@ -146,7 +146,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             set
             {
                 title = value;
-                if (NativeDialogShowing) { nativeDialog.SetTitle(value); }
+                if (NativeDialogShowing) { NativeDialog.SetTitle(value); }
             }
         }
 
@@ -329,9 +329,9 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             {
                 uint fileType;
 
-                if (nativeDialog != null)
+                if (NativeDialog != null)
                 {
-                    nativeDialog.GetFileTypeIndex(out fileType);
+                    NativeDialog.GetFileTypeIndex(out fileType);
                     return (int)fileType;
                 }
 
@@ -448,16 +448,16 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             }
 
             // Get our native dialog
-            if (nativeDialog == null)
+            if (NativeDialog == null)
             {
                 InitializeNativeFileDialog();
-                nativeDialog = GetNativeFileDialog();
+                NativeDialog = GetNativeFileDialog();
             }
 
             // Add the shellitem to the places list
-            if (nativeDialog != null)
+            if (NativeDialog != null)
             {
-                nativeDialog.AddPlace(place.NativeShellItem, (ShellNativeMethods.FileDialogAddPlacement)location);
+                NativeDialog.AddPlace(place.NativeShellItem, (ShellNativeMethods.FileDialogAddPlacement)location);
             }
         }
 
@@ -474,10 +474,10 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             if (string.IsNullOrEmpty(path)) { throw new ArgumentNullException("path"); }
 
             // Get our native dialog
-            if (nativeDialog == null)
+            if (NativeDialog == null)
             {
                 InitializeNativeFileDialog();
-                nativeDialog = GetNativeFileDialog();
+                NativeDialog = GetNativeFileDialog();
             }
 
             // Create a native shellitem from our path
@@ -491,9 +491,9 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             }
 
             // Add the shellitem to the places list
-            if (nativeDialog != null)
+            if (NativeDialog != null)
             {
-                nativeDialog.AddPlace(nativeShellItem, (ShellNativeMethods.FileDialogAddPlacement)location);
+                NativeDialog.AddPlace(nativeShellItem, (ShellNativeMethods.FileDialogAddPlacement)location);
             }
         }
 
@@ -603,11 +603,11 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
 
             // Fetch derived native dialog (i.e. Save or Open).
             InitializeNativeFileDialog();
-            nativeDialog = GetNativeFileDialog();
+            NativeDialog = GetNativeFileDialog();
 
             // Apply outer properties to native dialog instance.
-            ApplyNativeSettings(nativeDialog);
-            InitializeEventSink(nativeDialog);
+            ApplyNativeSettings(NativeDialog);
+            InitializeEventSink(NativeDialog);
 
             // Clear user data if Reset has been called
             // since the last show.
@@ -618,7 +618,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
 
             // Show dialog.
             showState = DialogShowState.Showing;
-            int hresult = nativeDialog.Show(parentWindow);
+            int hresult = NativeDialog.Show(parentWindow);
             showState = DialogShowState.Closed;
 
             // Create return information.
@@ -1005,7 +1005,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
         {
             get
             {
-                return (nativeDialog != null)
+                return (NativeDialog != null)
                     && (showState == DialogShowState.Showing || showState == DialogShowState.Closing);
             }
         }
@@ -1052,12 +1052,12 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
         {
             if (customize == null)
             {
-                if (nativeDialog == null)
+                if (NativeDialog == null)
                 {
                     InitializeNativeFileDialog();
-                    nativeDialog = GetNativeFileDialog();
+                    NativeDialog = GetNativeFileDialog();
                 }
-                customize = (IFileDialogCustomize)nativeDialog;
+                customize = (IFileDialogCustomize)NativeDialog;
             }
         }
         #endregion
