@@ -12,16 +12,29 @@ namespace Microsoft.WindowsAPICodePack.Shell
     /// <summary>
     /// A helper class for Shell Objects
     /// </summary>
-    internal static class ShellHelper
+    public static class ShellHelper
     {
+        public static string GetDisplayName(this IShellItem shellItem, ShellNativeMethods.ShellItemDesignNameOptions shellItemDesignNameOptions)
+        {
+            return GetDisplayNameImpl(shellItem, shellItemDesignNameOptions);
+        }
+
         internal static string GetParsingName(IShellItem shellItem)
         {
-            if (shellItem == null) { return null; }
+            return GetDisplayNameImpl(shellItem, ShellNativeMethods.ShellItemDesignNameOptions.DesktopAbsoluteParsing);
+        }
+
+        private static string GetDisplayNameImpl(IShellItem shellItem, ShellNativeMethods.ShellItemDesignNameOptions shellItemDesignNameOptions)
+        {
+            if (shellItem == null)
+            {
+                return null;
+            }
 
             string path = null;
 
             IntPtr pszPath = IntPtr.Zero;
-            HResult hr = shellItem.GetDisplayName(ShellNativeMethods.ShellItemDesignNameOptions.DesktopAbsoluteParsing, out pszPath);
+            HResult hr = shellItem.GetDisplayName(shellItemDesignNameOptions, out pszPath);
 
             if (hr != HResult.Ok && hr != HResult.InvalidArguments)
             {
@@ -36,7 +49,6 @@ namespace Microsoft.WindowsAPICodePack.Shell
             }
 
             return path;
-
         }
 
         internal static string GetAbsolutePath(string path)
