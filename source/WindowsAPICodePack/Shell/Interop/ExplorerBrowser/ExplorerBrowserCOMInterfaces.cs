@@ -10,8 +10,7 @@ using Microsoft.WindowsAPICodePack.Shell.Interop;
 
 namespace Microsoft.WindowsAPICodePack.Controls
 {
-
-    internal enum ShellViewGetItemObject
+    public enum ShellViewGetItemObject
     {
         Background = 0x00000000,
         Selection = 0x00000001,
@@ -22,7 +21,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     }
 
     [Flags]
-    internal enum FolderOptions
+    public enum FolderOptions
     {
         AutoArrange = 0x00000001,
         AbbreviatedNames = 0x00000002,
@@ -58,7 +57,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
         AllowRightToLeftReading = unchecked((int)0x80000000)
     }
 
-    internal enum FolderViewMode
+    public enum FolderViewMode
     {
         Auto = -1,
         First = 1,
@@ -73,7 +72,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
         Last = 8
     }
 
-    internal enum ExplorerPaneState
+    public enum ExplorerPaneState
     {
         DoNotCare = 0x00000000,
         DefaultOn = 0x00000001,
@@ -84,14 +83,14 @@ namespace Microsoft.WindowsAPICodePack.Controls
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
-    internal class FolderSettings
+    public class FolderSettings
     {
         public FolderViewMode ViewMode;
         public FolderOptions Options;
     }
 
     [Flags]
-    internal enum ExplorerBrowserOptions
+    public enum ExplorerBrowserOptions
     {
         NavigateOnce = 0x00000001,
         ShowFrames = 0x00000002,
@@ -103,7 +102,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
         NoPersistViewState = 0x00000080,
     }
 
-    internal enum CommDlgBrowserStateChange
+    public enum CommDlgBrowserStateChange
     {
         SetFocus = 0,
         KillFocus = 1,
@@ -112,7 +111,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
         StateChange = 4
     }
 
-    internal enum CommDlgBrowserNotifyType
+    public enum CommDlgBrowserNotifyType
     {
         Done = 1,
         Start = 2
@@ -195,7 +194,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
      Guid(ExplorerBrowserIIDGuid.IExplorerBrowser)]
-    internal interface IExplorerBrowser
+    public interface IExplorerBrowser
     {
         /// <summary>
         /// Prepares the browser to be navigated.
@@ -349,7 +348,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.IServiceProvider),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IServiceProvider
+    public interface IServiceProvider
     {
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -359,7 +358,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.IFolderView),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFolderView
+    public interface IFolderView
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetCurrentViewMode([Out] out uint pViewMode);
@@ -407,7 +406,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.IFolderView2),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFolderView2 : IFolderView
+    public interface IFolderView2 : IFolderView
     {
         // IFolderView
         [PreserveSig]
@@ -537,7 +536,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.IExplorerPaneVisibility),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IExplorerPaneVisibility
+    public interface IExplorerPaneVisibility
     {
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -547,7 +546,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.IExplorerBrowserEvents),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IExplorerBrowserEvents
+    public interface IExplorerBrowserEvents
     {
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -571,7 +570,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     //[ComImport,
     // Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser),
     // InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    //internal interface ICommDlgBrowser
+    //public interface ICommDlgBrowser
     //{
     //    [PreserveSig]
     //    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -593,7 +592,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     //[ComImport,
     // Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser2),
     // InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    //internal interface ICommDlgBrowser2
+    //public interface ICommDlgBrowser2
     //{
     //    // dlg
 
@@ -639,7 +638,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser3),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface ICommDlgBrowser3
+    public interface ICommDlgBrowser3
     {
         // dlg1
         [PreserveSig]
@@ -698,7 +697,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
    Guid(ExplorerBrowserIIDGuid.IInputObject),
    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IInputObject
+    public interface IInputObject
     {
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -717,7 +716,7 @@ namespace Microsoft.WindowsAPICodePack.Controls
     [ComImport,
      Guid(ExplorerBrowserIIDGuid.IShellView),
      InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IShellView
+    public interface IShellView
     {
         // IOleWindow
         [PreserveSig]

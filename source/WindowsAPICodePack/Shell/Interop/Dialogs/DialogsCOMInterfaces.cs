@@ -17,7 +17,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
     [ComImport(),
     Guid(ShellIIDGuid.IFileDialog),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFileDialog : IModalWindow
+    public interface IFileDialog : IModalWindow
     {
         // Defined on IModalWindow - repeated here due to requirements of COM interop layer.
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime),
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
     [ComImport(),
     Guid(ShellIIDGuid.IFileOpenDialog),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFileOpenDialog : IFileDialog
+    public interface IFileOpenDialog : IFileDialog
     {
         // Defined on IModalWindow - repeated here due to requirements of COM interop layer.
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime),
@@ -195,7 +195,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
     [ComImport(),
     Guid(ShellIIDGuid.IFileSaveDialog),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFileSaveDialog : IFileDialog
+    public interface IFileSaveDialog : IFileDialog
     {
         // Defined on IModalWindow - repeated here due to requirements of COM interop layer.
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime),
@@ -310,7 +310,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
     [ComImport,
     Guid(ShellIIDGuid.IFileDialogEvents),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFileDialogEvents
+    public interface IFileDialogEvents
     {
         // NOTE: some of these callbacks are cancelable - returning S_FALSE means that 
         // the dialog should not proceed (e.g. with closing, changing folder); to 
@@ -351,7 +351,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
     [ComImport,
     Guid(ShellIIDGuid.IFileDialogCustomize),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFileDialogCustomize
+    public interface IFileDialogCustomize
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void EnableOpenDropDown([In] int dwIDCtl);
@@ -477,7 +477,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
     [ComImport,
     Guid(ShellIIDGuid.IFileDialogControlEvents),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IFileDialogControlEvents
+    public interface IFileDialogControlEvents
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void OnItemSelected(

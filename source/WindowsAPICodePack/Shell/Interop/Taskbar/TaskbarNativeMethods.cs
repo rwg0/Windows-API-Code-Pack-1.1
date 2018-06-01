@@ -9,7 +9,8 @@ using MS.WindowsAPICodePack.Internal;
 namespace Microsoft.WindowsAPICodePack.Taskbar
 {
     #region Enums
-    internal enum KnownDestinationCategory
+
+    public enum KnownDestinationCategory
     {
         Frequent = 1,
         Recent
@@ -26,7 +27,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
         AppIdInfoLink = 0x7,   // indicates the data type is a pointer to a SHARDAPPIDINFOLINK structure 
     }
 
-    internal enum TaskbarProgressBarStatus
+    public enum TaskbarProgressBarStatus
     {
         NoProgress = 0,
         Indeterminate = 0x1,
@@ -60,7 +61,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
         NonInteractive = 0x00000010
     }
 
-    internal enum SetTabPropertiesOption
+    public enum SetTabPropertiesOption
     {
         None = 0x0,
         UseAppThumbnailAlways = 0x1,
@@ -74,7 +75,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
     #region Structs
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    internal struct ThumbButton
+    public struct ThumbButton
     {
         /// <summary>
         /// WPARAM value for a THUMBBUTTON being clicked.

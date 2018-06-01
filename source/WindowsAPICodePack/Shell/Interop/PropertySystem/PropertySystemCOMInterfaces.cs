@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport]
     [Guid(ShellIIDGuid.IPropertyStore)]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    interface IPropertyStore
+    public interface IPropertyStore
     {
         /// <summary>
         /// Gets the number of properties contained in the property store.
@@ -124,7 +124,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport,
     Guid(ShellIIDGuid.IPropertyDescriptionList),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IPropertyDescriptionList
+    public interface IPropertyDescriptionList
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetCount(out uint pcElem);
@@ -135,7 +135,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport,
     Guid(ShellIIDGuid.IPropertyDescription),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IPropertyDescription
+    public interface IPropertyDescription
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetPropertyKey(out PropertyKey pkey);
@@ -199,7 +199,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport,
     Guid(ShellIIDGuid.IPropertyDescription2),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IPropertyDescription2 : IPropertyDescription
+    public interface IPropertyDescription2 : IPropertyDescription
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetPropertyKey(out PropertyKey pkey);
@@ -269,7 +269,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport,
     Guid(ShellIIDGuid.IPropertyEnumType),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IPropertyEnumType
+    public interface IPropertyEnumType
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetEnumType([Out] out PropEnumType penumtype);
@@ -290,7 +290,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport,
     Guid(ShellIIDGuid.IPropertyEnumType2),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IPropertyEnumType2 : IPropertyEnumType
+    public interface IPropertyEnumType2 : IPropertyEnumType
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetEnumType([Out] out PropEnumType penumtype);
@@ -315,7 +315,7 @@ namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
     [ComImport,
     Guid(ShellIIDGuid.IPropertyEnumTypeList),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IPropertyEnumTypeList
+    public interface IPropertyEnumTypeList
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetCount([Out] out uint pctypes);

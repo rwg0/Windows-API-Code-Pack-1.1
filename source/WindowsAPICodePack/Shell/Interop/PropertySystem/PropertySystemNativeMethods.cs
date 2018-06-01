@@ -6,11 +6,11 @@ using MS.WindowsAPICodePack.Internal;
 
 namespace Microsoft.WindowsAPICodePack.Shell.PropertySystem
 {
-    internal static class PropertySystemNativeMethods
+    public static class PropertySystemNativeMethods
     {
         #region Property Definitions
 
-        internal enum RelativeDescriptionType
+        public enum RelativeDescriptionType
         {
             General,
             Date,

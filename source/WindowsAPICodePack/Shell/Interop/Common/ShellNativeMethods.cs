@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Microsoft.WindowsAPICodePack.Shell
 {
-    internal static class ShellNativeMethods
+    public static class ShellNativeMethods
     {
         #region Shell Enums
 
         [Flags]
-        internal enum FileOpenOptions
+        public enum FileOpenOptions
         {
             OverwritePrompt = 0x00000002,
             StrictFileTypes = 0x00000004,
@@ -36,13 +36,14 @@ namespace Microsoft.WindowsAPICodePack.Shell
             ForceShowHidden = 0x10000000,
             DefaultNoMiniMode = 0x20000000
         }
-        internal enum ControlState
+        public enum ControlState
         {
             Inactive = 0x00000000,
             Enable = 0x00000001,
             Visible = 0x00000002
         }
-        internal enum ShellItemDesignNameOptions
+
+        public enum ShellItemDesignNameOptions
         {
             Normal = 0x00000000,           // SIGDN_NORMAL
             ParentRelativeParsing = unchecked((int)0x80018001),   // SIGDN_INFOLDER | SIGDN_FORPARSING
@@ -61,7 +62,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         /// IPropertyStoreFactory::GetPropertyStore.
         /// </summary>
         [Flags]
-        internal enum GetPropertyStoreOptions
+        public enum GetPropertyStoreOptions
         {
             /// <summary>
             /// Meaning to a calling process: Return a read-only property store that contains all 
@@ -178,7 +179,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
             MaskValid = 0xff,
         }
 
-        internal enum ShellItemAttributeOptions
+        public enum ShellItemAttributeOptions
         {
             // if multiple items and the attirbutes together.
             And = 0x00000001,
@@ -197,26 +198,26 @@ namespace Microsoft.WindowsAPICodePack.Shell
             AllItems = 0x00004000
         }
 
-        internal enum FileDialogEventShareViolationResponse
+        public enum FileDialogEventShareViolationResponse
         {
             Default = 0x00000000,
             Accept = 0x00000001,
             Refuse = 0x00000002
         }
-        internal enum FileDialogEventOverwriteResponse
+        public enum FileDialogEventOverwriteResponse
         {
             Default = 0x00000000,
             Accept = 0x00000001,
             Refuse = 0x00000002
         }
-        internal enum FileDialogAddPlacement
+        public enum FileDialogAddPlacement
         {
             Bottom = 0x00000000,
             Top = 0x00000001,
         }
 
         [Flags]
-        internal enum SIIGBF
+        public enum SIIGBF
         {
             ResizeToFit = 0x00,
             BiggerSizeOk = 0x01,
@@ -227,7 +228,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         }
 
         [Flags]
-        internal enum ThumbnailOptions
+        public enum ThumbnailOptions
         {
             Extract = 0x00000000,
             InCacheOnly = 0x00000001,
@@ -238,7 +239,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         }
 
         [Flags]
-        internal enum ThumbnailCacheOptions
+        public enum ThumbnailCacheOptions
         {
             Default = 0x00000000,
             LowQuality = 0x00000001,
@@ -246,7 +247,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         }
 
         [Flags]
-        internal enum ShellFileGetAttributesOptions
+        public enum ShellFileGetAttributesOptions
         {
             /// <summary>
             /// The specified items can be copied.
@@ -445,7 +446,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         }
 
         [Flags]
-        internal enum ShellFolderEnumerationOptions : ushort
+        public enum ShellFolderEnumerationOptions : ushort
         {
             CheckingForChildren = 0x0010,
             Folders = 0x0020,
@@ -466,7 +467,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         #region Shell Structs
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        internal struct FilterSpec
+        public struct FilterSpec
         {
             [MarshalAs(UnmanagedType.LPWStr)]
             internal string Name;
@@ -565,7 +566,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
 
         #region Shell Library Enums
 
-        internal enum LibraryFolderFilter
+        public enum LibraryFolderFilter
         {
             ForceFileSystem = 1,
             StorageItems = 2,
@@ -573,28 +574,28 @@ namespace Microsoft.WindowsAPICodePack.Shell
         };
 
         [Flags]
-        internal enum LibraryOptions
+        public enum LibraryOptions
         {
             Default = 0,
             PinnedToNavigationPane = 0x1,
             MaskAll = 0x1
         };
 
-        internal enum DefaultSaveFolderType
+        public enum DefaultSaveFolderType
         {
             Detect = 1,
             Private = 2,
             Public = 3
         };
 
-        internal enum LibrarySaveOptions
+        public enum LibrarySaveOptions
         {
             FailIfThere = 0,
             OverrideExisting = 1,
             MakeUniqueName = 2
         };
 
-        internal enum LibraryManageDialogOptions
+        public enum LibraryManageDialogOptions
         {
             Default = 0,
             NonIndexableLocationWarning = 1
@@ -673,7 +674,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
         internal static extern Boolean SHChangeNotifyDeregister(uint hNotify);
 
         [Flags]
-        internal enum ShellChangeNotifyEventSource
+        public enum ShellChangeNotifyEventSource
         {
             InterruptLevel = 0x0001,
             ShellLevel = 0x0002,

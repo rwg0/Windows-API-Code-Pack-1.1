@@ -9,7 +9,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
     [ComImportAttribute()]
     [GuidAttribute("6332DEBF-87B5-4670-90C0-5E57B408A49E")]
     [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface ICustomDestinationList
+    public interface ICustomDestinationList
     {
         void SetAppID(
             [MarshalAs(UnmanagedType.LPWStr)] string pszAppID);
@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
     [ComImportAttribute()]
     [GuidAttribute("92CA9DCD-5622-4BBA-A805-5E9F541BD8C9")]
     [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IObjectArray
+    public interface IObjectArray
     {
         void GetCount(out uint cObjects);
         void GetAt(
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
     [ComImportAttribute()]
     [GuidAttribute("5632B1A4-E38A-400A-928A-D4CD63230295")]
     [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IObjectCollection
+    public interface IObjectCollection
     {
         // IObjectArray
         [PreserveSig]
@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAPICodePack.Taskbar
     [ComImportAttribute()]
     [GuidAttribute("c43dc798-95d1-4bea-9030-bb99e2983a1a")]
     [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface ITaskbarList4
+    public interface ITaskbarList4
     {
         // ITaskbarList
         [PreserveSig]

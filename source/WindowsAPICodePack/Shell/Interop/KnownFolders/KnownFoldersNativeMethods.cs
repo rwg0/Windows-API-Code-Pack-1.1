@@ -16,12 +16,12 @@ namespace Microsoft.WindowsAPICodePack.Shell
     /// should be located in the NativeMethods class.
     /// </remarks>
     [SuppressUnmanagedCodeSecurity]
-    internal static class KnownFoldersSafeNativeMethods
+    public static class KnownFoldersSafeNativeMethods
     {
         #region KnownFolders
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct NativeFolderDefinition
+        public struct NativeFolderDefinition
         {
             internal FolderCategory category;
             internal IntPtr name;
